@@ -53,6 +53,15 @@ class php {
 	function json( $a = false ) {
 		return $this->doIt(is_array( $this->value ) ? "json_encode" : "json_decode", [ $this->value, $a ] );
 	}
+
+	function get() {
+		return $this->value;
+	}
+
+	function change( $callback ) {
+		$this->value = $callback( $this->value );
+		return $this;
+	}
 }
 
 function __( $array ) {
@@ -73,6 +82,11 @@ __([ "test1", "test", "test2", "test3" ])
 
 __("string a ")->trim()->replace("a", "b")->print();
 __([ 'test', 'test1' ])->json()->print();
-__('["test","test1"]')->json()->print();
+
+
+__('["test","test1"]')->json()->change(function( $arr ) {
+	unset( $arr[0] );
+	return $arr;
+})->print();
 
 ?>
