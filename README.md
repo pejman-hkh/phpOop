@@ -2,7 +2,7 @@
 phpOop
 
 
-useage 
+usage 
 
 ```php
 
