@@ -62,11 +62,19 @@ class php {
 		$this->value = $callback( $this->value );
 		return $this;
 	}
+
+	function getContent() {
+		$this->value = file_get_contents( $this->value );
+		return $this;
+	}
 }
 
 function __( $array ) {
 	return new php( $array );
 }
+
+__('test.json')->getContent()->json()->print();
+
 
 __([2,3,1,5])->sort()->print();
 
@@ -88,5 +96,7 @@ __('["test","test1"]')->json()->change(function( $arr ) {
 	unset( $arr[0] );
 	return $arr;
 })->print();
+
+
 
 ?>
