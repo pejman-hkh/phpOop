@@ -5,6 +5,8 @@ phpOop
 usage 
 
 ```php
+__('test.json')->getContent()->json()->print();
+
 
 __([2,3,1,5])->sort()->print();
 
