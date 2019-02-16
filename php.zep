@@ -39,7 +39,7 @@ class Php
 	}
 
 	public function json( var a = 0 ) {
-		if is_array( $this->value ) { 
+		if is_array( this->value ) { 
 			let this->value = json_encode( this->value, a );
 		} else {
 			let this->value = json_decode( this->value, a );
